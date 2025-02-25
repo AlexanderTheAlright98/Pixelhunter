@@ -8,10 +8,9 @@ public class ObjectManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject.FindFirstObjectByType<ClickController>().misclicks = 0;
         objectName = gameObject.name;
+        GameObject.FindFirstObjectByType<GameManager>().ObjectClicked();
         Destroy(gameObject);
         Destroy(objectNameText);
     }
-
 }
