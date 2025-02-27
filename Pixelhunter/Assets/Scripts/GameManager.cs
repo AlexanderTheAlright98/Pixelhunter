@@ -5,16 +5,23 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Clicking")]
     public int objectsToFind;
     public int misclicks;
     bool objectClickedInThisFrame;
 
+    [Header("Timer")]
     public float startTime;
     float currentTime;
     bool timerOn;
     public TMP_Text timerText;
 
-    public GameObject gameOverlay, gameOverScreen, levelWonScreen, objectList, backgroundObject;
+    [Header("UI/Gameplay Elements")]
+    public GameObject gameOverlay;
+    public GameObject gameOverScreen;
+    public GameObject levelWonScreen;
+    public GameObject objectList;
+    public GameObject backgroundObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
