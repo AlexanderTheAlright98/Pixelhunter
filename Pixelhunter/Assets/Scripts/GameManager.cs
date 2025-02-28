@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public GameObject objectList;
     public GameObject backgroundObject;
 
+    [Header("SFX")]
+    public AudioSource sfxAudioSource;
+    public AudioClip correctSFX;
+    public AudioClip wrongSFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void ObjectClicked()
     {
         misclicks = 0;
+        sfxAudioSource.PlayOneShot(correctSFX);
         objectsToFind--;
         objectClickedInThisFrame = true;
     }
@@ -43,9 +49,10 @@ public class GameManager : MonoBehaviour
             currentTime -= Time.deltaTime;
             timerText.text = currentTime.ToString("f2");
         }
-        if (Input.GetMouseButtonDown(0) && misclicks < 4 && !objectClickedInThisFrame)
+        if (Input.GetMouseButtonDown(0) && misclicks < 4 && !objectClickedInThisFrame && objectsToFind > 0)
         {
             misclicks++;
+            sfxAudioSource.PlayOneShot(wrongSFX);
         }
         if (misclicks == 4)
         {
